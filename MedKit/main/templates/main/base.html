@@ -42,6 +42,18 @@
                 </p>
             </div>
         </div>
+        {% if messages %} 
+            <div class="d-flex justify-content-center align-items-center"> 
+                <div class="w-50"> 
+                    <ul class="list-unstyled"> 
+                        {% for message in messages %} 
+                            <div class="alert {{ message.tags }} alert-dismissible fade show position-relative" role="alert"> {{ message }} 
+                            </div> 
+                        {% endfor %} 
+                    </ul> 
+                </div> 
+            </div> 
+        {% endif %}
     </header>
     <div class="container">
         {% block content %}
@@ -52,6 +64,32 @@
     <img src="{% static "img/frame3.png" %}" class="frame3">
     <img src="{% static "img/frame4.png" %}" class="frame4">
 
-    <script src="{% static "bootstrap\js\bootstrap.bundle.min.js" %}"></script>
+    {% comment %} <script src="{% static "bootstrap\js\bootstrap.bundle.min.js" %}">
+        const alert = document.querySelector('.alert')
+        const closeButton = document.querySelector('.close');
+        closeButton.addEventListener("click", () => {
+            alert.style.display = "none";
+        });
+    </script> {% endcomment %}
+    {% block extrahead %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    {% endblock extrahead %}
+
 </body>
 </html>
+
+
+
+{% comment %} const images=document.querySelectorAll('.detail-image');
+            const prevBtn=document.querySelector('.prev-btn');
+            const nextBtn=document.querySelector('.next-btn');
+            let currentIndex=0;
+
+            images[currentIndex].style.display = 'block';
+
+            if(images.length===1){
+                prevBtn.style.display='none';
+                nextBtn.style.display='none';
+            } else{
+                prevBtn.addEventListener('click', () => {
+                    images[currentIndex].style.display ='none'; {% endcomment %}

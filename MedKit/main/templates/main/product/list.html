@@ -41,6 +41,7 @@
                     {% endfor%}
                 </div>
             </div>
+            {% comment %} здесь работает функционал пагинации(нумерации и переключения страниц) {% endcomment %}
             <ul class="pagination">
                 <li class="{% if not products.has_previous %}disabled{%endif%}">
                     <a href="{% if products.has_previous %}?page={{products.previous_page_number}}{%endif%}">Previous</a>

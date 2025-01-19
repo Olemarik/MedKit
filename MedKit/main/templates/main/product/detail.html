@@ -11,13 +11,16 @@
             {% for image in product.images.all %}
                 <img class="detail-image" src="{{ image.image.url }}" alt="" style="display: none;" data-index="{{forloop.counter0}}">
             {% endfor %}
+            {% comment %} стрелочки для перелистывания фотографий товара {% endcomment %}
             <div class="image-nav">
                 <button class="prev-btn">&lsaquo;</button>
                 <button class="next-btn">&rsaquo;</button>
             </div>
-            <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.jpg'%}{% endif %}" class="detail-image">
+            {% comment %} на случай отсутствия картинок товара {% endcomment %}
+            <img src="{% if  product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.jpg'%}{% endif %}" class="detail-image">
         </div>
         <script>
+            {% comment %} здесь описывается работа кнопок перелистывания {% endcomment %}
             const images=document.querySelectorAll('.detail-image');
             const prevBtn=document.querySelector('.prev-btn');
             const nextBtn=document.querySelector('.next-btn');

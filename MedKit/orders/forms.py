@@ -18,7 +18,7 @@ class OrderCreateForm(forms.ModelForm):
     
     def save(self, commit=True):
         order=super().save(commit=False)
-        User=self.request.user
+        order.user=self.request.user
         if commit:
             order.save()
         return order
